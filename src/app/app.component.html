@@ -1,0 +1,124 @@
+<div class="container">
+  <header>
+    <h1>Feliz 1er Mes <br>Mi Amor❤️</h1>
+    <div class="profile-pic-container">
+      <img src="img/1.jpeg" alt="Nosotros" class="profile-pic">
+    </div>
+    <p>Cuponera de cosas para que hagamos juntitos <br> exclusiva para Luli (mi pecosa)</p>
+  </header>
+
+  <div class="surprise-container">
+    
+    @if (!surprise) {
+      <div 
+        class="card surprise-card mystery" 
+        (click)="openSurprise()"
+        [class.shaking]="isSpinning">
+        
+        <div class="icon">🎁</div>
+        <h3>{{ isSpinning ? 'Sorteando...' : 'Tu Regalo Sorpresa' }}</h3>
+        
+        @if (!isSpinning) {
+          <p>Tocá para descubrir qué te ganaste hoy.</p>
+        } @else {
+          <p>🤞 Cruzá los dedos... 🤞</p>
+        }
+      </div>
+    } 
+    
+    @else {
+  <div class="card surprise-card winner" [ngClass]="surprise.category">
+      
+      <div class="gif-container">
+          @if (currentGifUrl) {
+        <img [src]="currentGifUrl" alt="Gif reacción" class="gif-img">
+      } @else {
+        <div class="loading-gif">Cargando GIF...</div>
+      }
+      </div>
+
+      <h3>{{ surprise.emoji }} ¡Te ganaste!:</h3>
+      
+        @if (surprise.text.includes('COMODÍN')) {
+        <div class="comodin-selector">
+            <p>Elegí vos el premio:</p>
+            <select (change)="onSurpriseChange($event)" class="custom-select">
+                <option selected disabled>-- Seleccioná una opción --</option>
+                @for (opt of surprisePool; track opt.text) {
+                    @if (!opt.text.includes('COMODÍN')) {
+                        <option [value]="opt.text">{{ opt.text }}</option>
+                    }
+                }
+            </select>
+        </div>
+    } @else {
+      <h2 class="prize-text">{{ surprise.text }}</h2>}
+      <p class="small">Sacale captura de pantalla para reclamarlo!</p>
+          <div class="next-spin-timer">
+            <small>Próximo cupon en:</small>
+          <div class="timer-badge">⏳ {{ surpriseTimeLeft }}</div>
+    </div>
+    </div>
+    }
+
+  </div>
+
+<hr class="divider">
+
+<div class="grid">
+  @for (coupon of coupons; track coupon.id) {
+    <div class="card" [class.redeemed]="coupon.isRedeemed">
+      <div class="icon">{{ coupon.emoji }}</div>
+      <h3>{{ coupon.title }}</h3>
+      <p>{{ coupon.description }}</p>
+  
+      @if (coupon.requiresInput && !coupon.isRedeemed) {
+          <textarea 
+              [(ngModel)]="coupon.userNote" 
+              placeholder="Escribí tu deseo acá..." 
+              class="wish-input"
+              rows="3"></textarea>
+      }
+      @if (coupon.requiresInput && coupon.isRedeemed) {
+          <p class="wish-locked">Pediste: <strong>"{{ coupon.userNote }}"</strong></p>
+      }
+  
+      <div class="status">
+          @if (coupon.cooldownHours) {
+              @if (timeLeftString) {
+                  <span class="btn-action disabled">Vuelve en {{ timeLeftString }}</span>
+              } @else {
+                  <span class="btn-action pulse" (click)="redeemCoupon(coupon.id)">
+                    ¡Pedir Antojo!
+                  </span>
+              }
+          } 
+          @else {
+              @if (!coupon.isRedeemed) {
+                  <span class="btn-action" (click)="redeemCoupon(coupon.id)">
+                    ¡Canjear!
+                  </span>
+              } @else {
+                  <span class="stamp">CANJEADO</span>
+              }
+          }
+      </div>
+    </div>
+  }
+</div>
+</div>
+
+<div class="area">
+    <ul class="circles">
+        <li><span>❤️</span></li>
+        <li><span>🖤</span></li>
+        <li><span>❤️</span></li>
+        <li><span>🤍</span></li>
+        <li><span>🖤</span></li>
+        <li><span>❤️</span></li>
+        <li><span>🤍</span></li>
+        <li><span>🖤</span></li>
+        <li><span>❤️</span></li>
+        <li><span>🤍</span></li>
+    </ul>
+</div>
