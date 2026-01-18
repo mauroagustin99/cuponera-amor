@@ -77,7 +77,7 @@ export const SURPRISE_POOL: SurpriseOption[] = [
     emoji: '🏃‍♂️', 
     text: 'Dia de running con fotito linda para subir.', 
     category: 'aire-libre',
-    query: 'jogging couple'
+    query: 'jogging couple running'
   },
   { 
     emoji: '🎨', 

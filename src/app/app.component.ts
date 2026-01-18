@@ -174,35 +174,52 @@ checkDailySurprise() {
   }
 
   openSurprise() {
-    if (this.surprise || this.isSpinning) return;
+if (this.surprise || this.isSpinning) return;
 
-    this.isSpinning = true;
+  this.isSpinning = true;
 
-    const randomIndex = Math.floor(Math.random() * this.surprisePool.length);
-    const selectedOption = this.surprisePool[randomIndex];
+  let history: string[] = [];
+  if (isPlatformBrowser(this.platformId)) {
+    const savedHistory = localStorage.getItem('surpriseHistory');
+    if (savedHistory) {
+      history = JSON.parse(savedHistory);
+    }
+  }
 
-    const rating = selectedOption.category === 'picante' ? 'r' : 'g';
+  let availableOptions = this.surprisePool.filter(option => !history.includes(option.text));
 
-    this.giphyService.getRandomGif(selectedOption.query, rating).subscribe(url => {
-      setTimeout(() => {
-        this.surprise = selectedOption;
-        this.currentGifUrl = url;
+  if (availableOptions.length === 0) {
+    availableOptions = this.surprisePool; 
+    history = []; 
+  }
 
-        if (isPlatformBrowser(this.platformId)) {
-          const dataToSave = {
-            timestamp: Date.now(),
-            surprise: selectedOption,
-            gifUrl: url
-          };
-          localStorage.setItem('dailySurprise', JSON.stringify(dataToSave));
-        }
-        
-        this.isSpinning = false;
-        this.triggerConfetti();
+  const randomIndex = Math.floor(Math.random() * availableOptions.length);
+  const selectedOption = availableOptions[randomIndex];
 
-        this.updateTimers();
-      }, 1500);
-    });
+  const rating = selectedOption.category === 'picante' ? 'r' : 'g';
+
+  this.giphyService.getRandomGif(selectedOption.query, rating).subscribe(url => {
+    setTimeout(() => {
+      this.surprise = selectedOption;
+      this.currentGifUrl = url;
+
+      if (isPlatformBrowser(this.platformId)) {
+        const dataToSave = {
+          timestamp: Date.now(),
+          surprise: selectedOption,
+          gifUrl: url
+        };
+        localStorage.setItem('dailySurprise', JSON.stringify(dataToSave));
+
+        history.push(selectedOption.text);
+        localStorage.setItem('surpriseHistory', JSON.stringify(history));
+      }
+      
+      this.isSpinning = false;
+      this.triggerConfetti();
+      this.updateTimers(); 
+    }, 1500);
+  });
   }
 
   // --- LÓGICA DEL CUPÓN SORPRESA (EL DEL JUEGO) ---
