@@ -41,7 +41,7 @@
       
         @if (surprise.text.includes('COMODÍN')) {
         <div class="comodin-selector">
-            <p>Elegí vos el premio:</p>
+            <p>Comodin! Elegí vos el premio:</p>
             <select (change)="onSurpriseChange($event)" class="custom-select">
                 <option selected disabled>-- Seleccioná una opción --</option>
                 @for (opt of surprisePool; track opt.text) {
@@ -58,6 +58,10 @@
             <small>Próximo cupon en:</small>
           <div class="timer-badge">⏳ {{ surpriseTimeLeft }}</div>
     </div>
+
+      <div class="disclaimer">
+        <p>* Si el plan no te gusta, convenceme para que te deje tirar devuelta 😉</p>
+      </div>
     </div>
     }
 

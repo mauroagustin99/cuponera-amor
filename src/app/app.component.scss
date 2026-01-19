@@ -1,8 +1,7 @@
-/* Reset básico y fuente */
 :host {
   font-family: 'Segoe UI', system-ui, sans-serif;
   display: block;
-  //background-color: #fce4ec;
+
   min-height: 100vh;
   padding: 20px;
 }
@@ -16,7 +15,6 @@ header {
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  /* Responsive automático */
   gap: 20px;
   max-width: 800px;
   margin: 0 auto;
@@ -257,52 +255,41 @@ header {
   transition: transform 0.3s;
 }
 
-/* Colores específicos según categoría para el ícono */
+//Categorias
 .card.cita .icon-container i {
   color: #1976D2;
 }
 
-/* Azul */
 .card.picante .icon-container i {
   color: #D32F2F;
 }
 
-/* Rojo fuerte */
 .card.aire-libre .icon-container i {
   color: #388E3C;
 }
 
-/* Verde */
 .card.tranqui .icon-container i {
   color: #7B1FA2;
 }
 
-/* Violeta */
-
-/* Animación al pasar el mouse (opcional) */
 .card:hover .icon-container i {
   transform: scale(1.1) rotate(5deg);
 }
 
 
-/* Ajustes para la tarjeta ganadora */
 .surprise-card.winner {
   max-width: 350px;
-  /* Limitamos el ancho para que el gif no sea gigante */
   margin: 0 auto;
 }
 
 .gif-container {
   width: 100%;
   height: 250px;
-  /* Altura fija obligatoria */
   overflow: hidden;
-  /* CLAVE: Todo lo que sobre, lo corta */
   border-radius: 12px;
   margin-bottom: 15px;
   background-color: #f0f0f0;
   position: relative;
-  /* Para que la imagen se acomode relativo a esto */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -312,7 +299,6 @@ header {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* CLAVE: Hace zoom para llenar la caja sin estirarse */
   display: block;
 }
 
@@ -323,19 +309,15 @@ header {
 
 //Fondo
 
-/* EL FONDO ROSA QUE YA TE GUSTABA */
 .area {
   background: #fce4ec;
-  /* Tu rosa pálido */
   background: -webkit-linear-gradient(to left, #fce4ec, #f8bbd0);
   width: 100%;
   height: 100vh;
   position: fixed;
-  /* Fijo para que no moleste al scroll */
   top: 0;
   left: 0;
   z-index: -1;
-  /* Mandarlo al fondo de todo */
 }
 
 .circles {
@@ -356,17 +338,12 @@ header {
   width: 40px;
   height: 40px;
   font-size: 40px;
-  /* CAMBIO 1: Arrancan más arriba (antes era -150px) */
   bottom: -50px;
 
-  /* CAMBIO 2: Velocidad base mucho más rápida (antes era 25s) */
   animation: animate 12s linear infinite;
 
   opacity: 0.7;
 }
-
-/* Ajustamos los tiempos individuales para que no suban todos igual */
-/* Algunos más rápidos (9s, 10s) y otros más lentos (18s, 20s) para variar */
 
 .circles li:nth-child(1) {
   left: 25%;
@@ -452,7 +429,7 @@ header {
 }
 
 
-/* Selector del Comodín Sorpresa */
+
 .custom-select {
   width: 100%;
   padding: 10px;
@@ -464,7 +441,7 @@ header {
   color: #333;
 }
 
-/* Input del deseo */
+
 .wish-input {
   width: 80%;
   margin: 10px 0;
@@ -473,7 +450,6 @@ header {
   border: 1px solid #ccc;
   font-family: inherit;
   resize: none;
-  /* Que no pueda cambiar el tamaño */
 }
 
 .wish-locked {
@@ -484,7 +460,6 @@ header {
   font-style: italic;
 }
 
-/* Botón deshabilitado por tiempo */
 .btn-action.disabled {
   background: #9e9e9e;
   cursor: wait;
@@ -514,12 +489,16 @@ header {
 
 header p {
   font-size: 1.1rem;
-  /* Un pelín más grande que el texto normal */
   line-height: 1.5;
-  /* Para que no se peguen las líneas del <br> */
   color: #555;
-  /* O un gris oscuro/rosa oscuro */
   margin-top: 10px;
   font-weight: 500;
-  /* Un poquito de negrita, pero no full */
+}
+
+.disclaimer {
+  margin-top: 15px;
+  font-size: 0.75rem;
+  color: #888;
+  font-style: italic;
+  padding: 0 10px;
 }

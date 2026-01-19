@@ -37,6 +37,30 @@ export const SURPRISE_POOL: SurpriseOption[] = [
     query: 'drinking mate argentina' 
   },
   { 
+    emoji: '🧀', 
+    text: 'Merienda de Chipá: Compramos chipá calentito y vamos al parque a tomar mate.', 
+    category: 'aire-libre',
+    query: 'cheese bread' 
+  },
+  { 
+    emoji: '🥓', 
+    text: 'Picadita de tarde: Compramos salamin, pan , queso y hacemos una picadita', 
+    category: 'tranqui',
+    query: 'charcuterie board' 
+  },
+  { 
+    emoji: '🍞', 
+    text: 'Antojo de Miga: Compramos sanguchitos de miga y los comemos viendo una peli o en el río.', 
+    category: 'tranqui',
+    query: 'sandwich eating' 
+  },
+  { 
+    emoji: '🥪', 
+    text: 'Merienda Clásica: Vamos a un barcito lindo a pedir un Tostado de jamón y queso (con licuado o café).', 
+    category: 'cita',
+    query: 'grilled cheese sandwich' 
+  },
+  { 
     emoji: '🥪', 
     text: 'Noche de Carlitos: A comer un buen carlito en Pellegrini (con papas ;).', 
     category: 'cita',
@@ -56,13 +80,13 @@ export const SURPRISE_POOL: SurpriseOption[] = [
   },
   { 
     emoji: '🏖️', 
-    text: 'Vamos a la isla', 
+    text: 'Vamos a la isla, planeemos el dia', 
     category: 'aire-libre',
     query: 'beach sun'
   },
   { 
     emoji: '🏛️', 
-    text: 'Turisteando: Visitemos algun museo!!', 
+    text: 'Turisteando: Conozcamos algun museo!!', 
     category: 'aire-libre',
     query: 'monument travel'
   },
@@ -80,8 +104,14 @@ export const SURPRISE_POOL: SurpriseOption[] = [
     query: 'jogging couple running'
   },
   { 
+    emoji: '🍷', 
+    text: 'Volver a nuestro primer beso: Sangría de la Tía y un paquete de pipas (planazo).', 
+    category: 'cita',
+    query: 'red wine cheers love' 
+  },
+  { 
     emoji: '🎨', 
-    text: 'Noche de Pintura y Vino: Acuarelas , buscamos un diseño y tratamos de recrearlo como competencia', 
+    text: 'Noche de Pintura y Vino: Acuarelas o algo para pintar , buscamos un diseño y tratamos de recrearlo como competencia', 
     category: 'tranqui',
     query: 'painting art funny'
   },
@@ -93,7 +123,7 @@ export const SURPRISE_POOL: SurpriseOption[] = [
   },
     { 
     emoji: '🛍️', 
-    text: 'Paseo para el hogar: Vamos a bazares del centro a ver cosas para decorar tu casita juntos', 
+    text: 'Paseo para tu casita: Vamos a bazares del centro a ver cosas para decorar juntitos', 
     category: 'tranqui',
     query: 'shopping ' 
   },
